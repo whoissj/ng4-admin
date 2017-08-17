@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
     this.authService.loginWithCredentials(user.userName,user.password)
       .subscribe(auth =>{
         if(!auth.hasError){
-          console.log(auth);
           localStorage.setItem('auth',JSON.stringify(auth));
+          localStorage.setItem('userId',(auth.user.id).toString());
           this.router.navigate(['todo']);
         } else {
           this.auth = Object.assign({}, auth);

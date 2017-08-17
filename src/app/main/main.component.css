@@ -4,6 +4,7 @@
   background: #333;
   border-radius: 6px;
   margin: 16px 84px;
+  margin-left: 50px;
   background-image: url("../../assets/logo-icon-sm.png");
   background-size: cover;
 }
@@ -18,7 +19,7 @@
   font-size: 18px;
 }
 .my-title{
-  margin-left: 80px;
+  margin-left: 50px;
   color: #fff;
   line-height: 32px;
   font-size: 18px;
@@ -51,4 +52,16 @@
   right: 0;
   bottom: 0;
   top: 0;
+}
+.my-ngconteny{
+  position: relative;
+  margin:24px 16px 0;
+}
+.my-content{
+  position: absolute;
+  top:0;
+  left: 0;
+  right:0;
+  bottom: 66px;
+  background-color: #fff;
 }

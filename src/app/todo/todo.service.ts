@@ -50,7 +50,9 @@ export class TodoService {
     const url = `${this.api_url}/?userId=${userId}`;
     return this.http.get(url)
       .toPromise()
-      .then(res => res.json() as Todo[])
+      .then(res => {
+        return res.json() as Todo[]
+      })
       .catch(this.handleError);
   }
   // GET /todos?completed=true/false
