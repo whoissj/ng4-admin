@@ -1,0 +1,11 @@
+<section class="todoapp">
+  <app-todo-header [placeholder]="'What needs to be done?'" (textChanges)="onTextChanges($event)" (onEnterUp)="addTodo()"></app-todo-header>
+  <app-todo-list
+    [todos]="todos"
+    (onRemoveTodo)="removeTodo($event)"
+    (onToggleTodo)="toggleTodo($event)"
+    (onToggleAll)="toggleAll()"
+  >
+  </app-todo-list>
+  <app-todo-footer [itemCount]="todos?.length" (onClear)="clearCompleted()"></app-todo-footer>
+</section>
