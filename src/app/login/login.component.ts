@@ -3,16 +3,22 @@ import { AuthService } from '../core/auth.service';
 import {Router} from "@angular/router";
 import {Auth} from "../domain/entries";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { NzModalService } from 'ng-zorro-antd';
+
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isLoading: boolean = false;
   userName = '';
   password = "";
   auth: Auth;
   validateForm: FormGroup;
-  constructor(private authService: AuthService,private router: Router,private fb: FormBuilder) {
+  constructor(private authService: AuthService,
+              private router: Router,
+              private fb: FormBuilder,
+              private nzModalService: NzModalService) {
 
   }
 
@@ -26,6 +32,7 @@ export class LoginComponent implements OnInit {
 
   }
   login(user){
+    this.isLoading = true;
     this.authService.loginWithCredentials(user.userName,user.password)
       .subscribe(auth =>{
         if(!auth.hasError){
@@ -43,6 +50,14 @@ export class LoginComponent implements OnInit {
             clearTimeout(timer);
           },2000)
         }
+      },err=>{
+        this.nzModalService.error({
+          title: '登 录 失 败',
+          content: '请检查网络',
+          width:'250px'
+        });
+        this.isLoading = false;
+
       });
   }
   ngOnInit() {
