@@ -3,7 +3,7 @@
     <div nz-form-control [nzValidateStatus]="validateForm.controls.userName">
       <nz-input formControlName="userName" [nzPlaceHolder]="'用户名'" [nzSize]="'large'">
         <ng-template #prefix>
-          <i class="anticon anticon-user"></i>
+          <i class="anticon anticon-user input-icon"></i>
         </ng-template>
       </nz-input>
       <div nz-form-explain *ngIf="validateForm.controls.userName.dirty&&validateForm.controls.userName.hasError('required')">请输入用户名!</div>
@@ -13,7 +13,7 @@
     <div nz-form-control [nzValidateStatus]="validateForm.controls.password">
       <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'密  码'" [nzSize]="'large'">
         <ng-template #prefix>
-          <i class="anticon anticon-lock"></i>
+          <i class="anticon anticon-lock input-icon"></i>
         </ng-template>
       </nz-input>
       <div nz-form-explain *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('required')">请输入密码!</div>

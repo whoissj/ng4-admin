@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         if(!auth.hasError){
           localStorage.setItem('auth',JSON.stringify(auth));
           localStorage.setItem('userId',(auth.user.id).toString());
-          this.router.navigate(['todo']);
+          this.router.navigate(['main']);
         } else {
           this.auth = Object.assign({}, auth);
           let that = this;

@@ -31,6 +31,7 @@
 :host ::ng-deep .ant-layout-sider-collapsed .ant-menu-submenu-title:after {
   display: none;
 }
+
 :host ::ng-deep .trigger {
   font-size: 18px;
   line-height: 64px;
@@ -47,21 +48,17 @@
   margin-left: 8px;
 }
 .main-container{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
+  min-height: 100%;
 }
 .my-ngconteny{
-  position: relative;
   margin:24px 16px 0;
 }
-.my-content{
-  position: absolute;
-  top:0;
-  left: 0;
-  right:0;
-  bottom: 66px;
-  background-color: #fff;
+.rightcopy{
+  text-align: center;
+  padding: 16px;
+  background-color: #ECECDE;
+}
+.set-btn{
+  float: right;
+  margin-right: 18px;
 }

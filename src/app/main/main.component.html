@@ -1,11 +1,14 @@
 <nz-layout class="main-container">
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="0" [nzBreakpoint]="'lg'" [nzTrigger]="null">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed"
+            [nzCollapsedWidth]="0" [nzBreakpoint]="'lg'"
+            [nzTrigger]="null" nzCollapseChange="'onCollapseChange()'">
+
     <div class="logo">
 
     </div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
       <li nz-submenu>
-        <span title><i class="anticon anticon-user"></i><span class="nav-text">User</span></span>
+        <span title><i class="anticon anticon-user fz-15"></i><span class="nav-text fz-15">User</span></span>
         <ul>
           <li nz-menu-item>Tom</li>
           <li nz-menu-item>Bill</li>
@@ -13,24 +16,100 @@
         </ul>
       </li>
       <li nz-submenu>
-        <span title><i class="anticon anticon-team"></i><span class="nav-text">Team</span></span>
+        <span title><i class="anticon anticon-team fz-15"></i><span class="nav-text fz-15">Team</span></span>
         <ul>
           <li nz-menu-item>Team 1</li>
           <li nz-menu-item>Team 2</li>
         </ul>
       </li>
-      <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">File</span></span></li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-user fz-15"></i><span class="nav-text fz-15">User</span></span>
+        <ul>
+          <li nz-menu-item>Tom</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-team fz-15"></i><span class="nav-text fz-15">Team</span></span>
+        <ul>
+          <li nz-menu-item>Team 1</li>
+          <li nz-menu-item>Team 2</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-user fz-15"></i><span class="nav-text fz-15">User</span></span>
+        <ul>
+          <li nz-menu-item>Tom</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-team fz-15"></i><span class="nav-text fz-15">Team</span></span>
+        <ul>
+          <li nz-menu-item>Team 1</li>
+          <li nz-menu-item>Team 2</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-user fz-15"></i><span class="nav-text fz-15">User</span></span>
+        <ul>
+          <li nz-menu-item>Tom</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-team fz-15"></i><span class="nav-text fz-15">Team</span></span>
+        <ul>
+          <li nz-menu-item>Team 1</li>
+          <li nz-menu-item>Team 2</li>
+        </ul>
+      </li>
+      <li nz-menu-item><span><i class="anticon anticon-file fz-15"></i><span class="nav-text fz-15">File</span></span></li>
     </ul>
   </nz-sider>
   <nz-layout>
     <nz-header style="background: #333; padding:0;">
       <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
       <span class="my-title">无 忧 易 考</span>
+      <nz-dropdown class="set-btn" [nzTrigger]="'click'">
+        <button nz-button nz-dropdown >
+          <span>{{auth?.user?.username}}</span> <i class="anticon anticon-down"></i></button>
+        <ul nz-menu>
+          <li nz-menu-item (click)="changePsd(auth?.user?.username)">
+            <span>
+              <i class="anticon anticon-key"></i>
+              <span>修改密码</span>
+            </span>
+          </li>
+          <li nz-menu-item (click)="logout()">
+            <span>
+              <i class="anticon anticon-poweroff"></i>
+              <span>退出登录</span>
+            </span>
+          </li>
+          <li nz-menu-item (click)="modalTest()">
+            <span>
+              <i class="anticon anticon-poweroff"></i>
+              <span>测试对话</span>
+            </span>
+          </li>
+        </ul>
+      </nz-dropdown>
     </nz-header>
     <nz-content class="my-ngconteny">
       <div class="my-content" >
-        Content
+        <ul nz-menu>
+          <li nz-menu-item>{{number}}</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
       </div>
     </nz-content>
+    <nz-footer  class="rightcopy">
+      <span>jdtx ©2017 All Right Reserved</span>
+    </nz-footer>
   </nz-layout>
 </nz-layout>

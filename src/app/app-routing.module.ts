@@ -10,12 +10,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path:'todo',
-    redirectTo: 'todo/ALL'
-  },
-  {
     path:'main',
     redirectTo:'main'
+  },
+  {
+    path:'todo',
+    redirectTo: 'todo/ALL'
   },
   {
     path: 'login',
