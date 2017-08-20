@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './core/auth.service';
-import {TodoService} from './todo/todo.service';
+import { TodoService } from './todo/todo.service';
 
 import {TodoModule} from './todo/todo.module';
 import {MainModule} from "./main/main.module";
@@ -14,8 +14,9 @@ import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
+import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,10 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     NgZorroAntdModule.forRoot()
   ],
-  providers: [ AuthService, TodoService ],
+  providers: [
+    AuthService,
+    TodoService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

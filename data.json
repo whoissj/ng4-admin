@@ -58,13 +58,18 @@
   "users": [
     {
       "id": 1,
-      "username": "wang",
+      "username": "hello",
       "password": "1234"
     },
     {
       "id": 2,
-      "username": "peng",
-      "password": "5678"
+      "username": "world",
+      "password": "1234"
+    },
+    {
+      "username": "123",
+      "password": "1234",
+      "id": 3
     }
   ]
 }

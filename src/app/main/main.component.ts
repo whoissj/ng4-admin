@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
       },
     });
     subscription.subscribe(res => {
-      console.log(res);
+      // console.log(res);
       if(typeof res === 'number'){
         this.number += res;
       }

@@ -10,6 +10,7 @@ import { NzModalService } from 'ng-zorro-antd';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loginStatus: string = '登 陆';
   isLoading: boolean = false;
   userName = '';
   password = "";
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
   }
   login(user){
     this.isLoading = true;
+    this.loginStatus = '登 录 中';
     this.authService.loginWithCredentials(user.userName,user.password)
       .subscribe(auth =>{
         if(!auth.hasError){
@@ -40,6 +42,8 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('userId',(auth.user.id).toString());
           this.router.navigate(['main']);
         } else {
+          this.isLoading = false;
+          this.loginStatus = '登 录';
           this.auth = Object.assign({}, auth);
           let that = this;
           let timer = null;
@@ -57,7 +61,7 @@ export class LoginComponent implements OnInit {
           width:'250px'
         });
         this.isLoading = false;
-
+        this.loginStatus = '登 录';
       });
   }
   ngOnInit() {

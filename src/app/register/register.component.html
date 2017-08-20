@@ -7,6 +7,7 @@
         </ng-template>
       </nz-input>
       <div nz-form-explain *ngIf="validateForm.controls.userName.dirty&&validateForm.controls.userName.hasError('required')">请输入用户名!</div>
+      <div nz-form-explain *ngIf="validateForm.controls.userName.dirty&&validateForm.controls.userName.hasError('minlength')">用户名最少3位!</div>
     </div>
   </div>
   <div nz-form-item>
@@ -17,12 +18,15 @@
         </ng-template>
       </nz-input>
       <div nz-form-explain *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('required')">请输入密码!</div>
-      <div nz-form-explain *ngIf="auth?.hasError" style="color: #f04134">{{auth.errMsg}}</div>
+      <div nz-form-explain *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('minlength')">密码名最少4位!</div>
     </div>
   </div>
   <div nz-form-item>
     <div nz-form-control>
-      <button nz-button class="register-form-button" [nzType]="'primary'" [nzSize]="'large'">注  册</button>
+      <button nz-button class="register-form-button"
+              [nzType]="'primary'"
+              [nzSize]="'large'"
+              [nzLoading]="isLoading">{{statusMes}}</button>
       <div nz-button class="register-form-button to-login" [nzType]="'default'" [nzSize]="'large'" routerLink="/login">登  录</div>
     </div>
   </div>

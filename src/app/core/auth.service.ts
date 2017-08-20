@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Auth} from "../domain/entries";
+import {Auth, User} from "../domain/entries";
 import {Http} from "@angular/http";
 import {UserService} from "./user.service";
 import {Observable} from "rxjs/Rx";
@@ -45,6 +45,21 @@ export class AuthService {
         this.auth = Object.assign({},auth);
         this.subject.next(this.auth);
         return this.auth;
+      })
+  }
+  register(username: string, password: string): Observable<User>{
+    let toAddUser = {
+      username: username,
+      password: password
+    };
+    return this.userService
+      .findUser(username)
+      .switchMap(user => {
+        if(user !== null) {
+              return null
+        }else {
+          return this.userService.addUser(toAddUser).map(u => u);
+        }
       })
   }
 }

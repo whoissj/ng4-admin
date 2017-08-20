@@ -30,12 +30,9 @@
       <button nz-button class="login-form-button"
               [nzType]="'primary'"
               [nzSize]="'large'"
-              [nzLoading]="isLoading"><span>登  录</span></button>
+              [nzLoading]="isLoading"><span>{{loginStatus}}</span></button>
       <a routerLink="/register">立  即 注    册</a>
     </div>
   </div>
 </form>
-<p style="width: 100px">
-  <nz-spin [nzTip]="'正在读取数据...'" [nzSpinning]="isShowLoaing">
-  </nz-spin>
-</p>
+
