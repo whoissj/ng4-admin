@@ -23,6 +23,7 @@ export class MainComponent implements OnInit {
       title:false,
       content: ChangePasswordComponent,
       footer: false,
+      width: '350px',
       componentParams: {
         username: username
       },
@@ -34,10 +35,7 @@ export class MainComponent implements OnInit {
       },
     });
     subscription.subscribe(res => {
-      // console.log(res);
-      if(typeof res === 'number'){
-        this.number += res;
-      }
+      console.log(res);
     })
   }
 

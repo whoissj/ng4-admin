@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Auth, User} from "../domain/entries";
-import {Http} from "@angular/http";
+import {Http, Headers} from "@angular/http";
 import {UserService} from "./user.service";
 import {Observable} from "rxjs/Rx";
 import {ReplaySubject} from "rxjs/ReplaySubject";
@@ -9,6 +9,8 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 export class AuthService {
   auth: Auth = {hasError: true, redirectUrl: '', errMsg: 'not logged in',user:null};
   subject: ReplaySubject<Auth> = new ReplaySubject<Auth>(1);
+  private headers = new Headers({'Content-Type': 'application/json'});
+  mes = new Observable;
 
   constructor(private http: Http,private userService: UserService) {
     let oldAuth = JSON.parse(localStorage.getItem('auth'));
@@ -56,9 +58,23 @@ export class AuthService {
       .findUser(username)
       .switchMap(user => {
         if(user !== null) {
-              return null
+          return Observable.throw({mes:'用户已存在'});
         }else {
           return this.userService.addUser(toAddUser).map(u => u);
+        }
+      })
+  }
+  changePsd(username: string, password: string, newpsd: string): Observable<User> {
+    return this.userService.findUser(username)
+      .switchMap(user => {
+        if(user.password === password) {
+          let url = `http://localhost:3000/users/${user.id}`;
+          return this.http.patch(url,JSON.stringify({password:newpsd}),{headers: this.headers})
+            .map(res => {
+              return res.json();
+            })
+        }else{
+           return Observable.throw({mes:'wrong'});
         }
       })
   }

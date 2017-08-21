@@ -1,25 +1,32 @@
 :host ::ng-deep .logo {
-  width: 32px;
+  /*width: 32px;*/
+  /*height: 32px;*/
+  /*background: #333;*/
+  /*border-radius: 6px;*/
+  /*margin: 16px 84px;*/
+  /*margin-left: 50px;*/
+  /*background-image: url("../../assets/logo-icon-sm.png");*/
+  /*background-size: cover;*/
+  /*background-position: center left;*/
   height: 32px;
-  background: #333;
+  background-color: #333;
   border-radius: 6px;
-  margin: 16px 84px;
-  margin-left: 50px;
-  background-image: url("../../assets/logo-icon-sm.png");
-  background-size: cover;
+  margin: 16px;
 }
 .logo span{
-  position: absolute;
-  /* top: 0; */
-  /* bottom: 0; */
-  /* margin: auto; */
-  left: 60px;
+  float: right;
+  margin-right: 15px;
   color: #fff;
   line-height: 32px;
-  font-size: 18px;
+  font-size: 15px;
+}
+.logo img {
+  float: left;
+  width: 32px;
+  border-radius: 6px;
 }
 .my-title{
-  margin-left: 50px;
+  margin-left: 15px;
   color: #fff;
   line-height: 32px;
   font-size: 18px;

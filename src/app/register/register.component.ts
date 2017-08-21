@@ -9,6 +9,7 @@ import {Auth} from "../domain/entries";
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
+
 })
 export class RegisterComponent implements OnInit {
   validateForm: FormGroup;
@@ -62,7 +63,7 @@ export class RegisterComponent implements OnInit {
         this.isLoading = false;
         this.statusMes = '注  册';
         this.nzModalService.error({
-          title: '用 户 已 存 在',
+          title: err.mes,
           content: '请重新注册',
           width:'250px'
         });

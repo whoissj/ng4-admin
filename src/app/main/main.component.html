@@ -1,10 +1,11 @@
 <nz-layout class="main-container">
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed"
-            [nzCollapsedWidth]="0" [nzBreakpoint]="'lg'"
+            [nzCollapsedWidth]="64" [nzBreakpoint]="'lg'"
             [nzTrigger]="null" nzCollapseChange="'onCollapseChange()'">
 
     <div class="logo">
-
+      <img src="../../assets/logo-icon-sm.png" alt="">
+      <span [hidden]="isCollapsed">无 忧 易 考</span>
     </div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
       <li nz-submenu>
@@ -73,7 +74,7 @@
   <nz-layout>
     <nz-header style="background: #333; padding:0;">
       <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
-      <span class="my-title">无 忧 易 考</span>
+      <span class="my-title" [hidden]="!isCollapsed">无 忧 易 考</span>
       <nz-dropdown class="set-btn" [nzTrigger]="'click'">
         <button nz-button nz-dropdown >
           <span>{{auth?.user?.username}}</span> <i class="anticon anticon-down"></i></button>
@@ -106,6 +107,77 @@
           <li nz-menu-item>Bill</li>
           <li nz-menu-item>Alex</li>
         </ul>
+        <ul nz-menu>
+          <li nz-menu-item>{{number}}</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+        <ul nz-menu>
+          <li nz-menu-item>{{number}}</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+        <ul nz-menu>
+          <li nz-menu-item>{{number}}</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+        <ul nz-menu>
+          <li nz-menu-item>{{number}}</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul> <ul nz-menu>
+        <li nz-menu-item>{{number}}</li>
+        <li nz-menu-item>Bill</li>
+        <li nz-menu-item>Alex</li>
+      </ul> <ul nz-menu>
+        <li nz-menu-item>{{number}}</li>
+        <li nz-menu-item>Bill</li>
+        <li nz-menu-item>Alex</li>
+      </ul>
+        <ul nz-menu>
+          <li nz-menu-item>{{number}}</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul> <ul nz-menu>
+        <li nz-menu-item>{{number}}</li>
+        <li nz-menu-item>Bill</li>
+        <li nz-menu-item>Alex</li>
+      </ul> <ul nz-menu>
+        <li nz-menu-item>{{number}}</li>
+        <li nz-menu-item>Bill</li>
+        <li nz-menu-item>Alex</li>
+      </ul> <ul nz-menu>
+        <li nz-menu-item>{{number}}</li>
+        <li nz-menu-item>Bill</li>
+        <li nz-menu-item>Alex</li>
+      </ul> <ul nz-menu>
+        <li nz-menu-item>{{number}}</li>
+        <li nz-menu-item>Bill</li>
+        <li nz-menu-item>Alex</li>
+      </ul> <ul nz-menu>
+        <li nz-menu-item>{{number}}</li>
+        <li nz-menu-item>Bill</li>
+        <li nz-menu-item>Alex</li>
+      </ul> <ul nz-menu>
+        <li nz-menu-item>{{number}}</li>
+        <li nz-menu-item>Bill</li>
+        <li nz-menu-item>Alex</li>
+      </ul> <ul nz-menu>
+        <li nz-menu-item>{{number}}</li>
+        <li nz-menu-item>Bill</li>
+        <li nz-menu-item>Alex</li>
+      </ul>
+
+
+
+
+
+
+
+
+
+
       </div>
     </nz-content>
     <nz-footer  class="rightcopy">
