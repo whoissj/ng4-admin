@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import {Auth, User} from "../domain/entries";
+import {Auth, Status, User} from "../domain/entries";
 import {Http, Headers} from "@angular/http";
 import {UserService} from "./user.service";
 import {Observable} from "rxjs/Rx";
 import {ReplaySubject} from "rxjs/ReplaySubject";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class AuthService {
   auth: Auth = {hasError: true, redirectUrl: '', errMsg: 'not logged in',user:null};
   subject: ReplaySubject<Auth> = new ReplaySubject<Auth>(1);
+  status:Status = {isLoading:false,msg:' '};
+  statusSubject: Subject<Status> = new BehaviorSubject<Status>(this.status);
   private headers = new Headers({'Content-Type': 'application/json'});
-  mes = new Observable;
 
   constructor(private http: Http,private userService: UserService) {
     let oldAuth = JSON.parse(localStorage.getItem('auth'));
@@ -19,7 +22,6 @@ export class AuthService {
     }else{
       this.subject.next(this.auth);
     }
-
   }
 
   getAuth(): Observable<Auth>{
@@ -30,7 +32,8 @@ export class AuthService {
     this.auth = Object.assign({},this.auth, {user: null, hasError: true, redirectUrl: '', errMsg: 'not logged in'});
   }
 
-  loginWithCredentials(username: string, password: string): Observable<Auth> {
+  loginWithCredentials(username: string, password: string): Observable<any> {
+    this.changeStatus(true,'登 录 中 ...');
     return this.userService.findUser(username)
       .map(user => {
         let auth = new Auth();
@@ -46,10 +49,13 @@ export class AuthService {
         }
         this.auth = Object.assign({},auth);
         this.subject.next(this.auth);
+        this.changeStatus(false,'登 录');
         return this.auth;
       })
+
   }
   register(username: string, password: string): Observable<User>{
+    this.changeStatus(true,'注 册 中 ...');
     let toAddUser = {
       username: username,
       password: password
@@ -57,6 +63,7 @@ export class AuthService {
     return this.userService
       .findUser(username)
       .switchMap(user => {
+        this.changeStatus(true,'注 册');
         if(user !== null) {
           return Observable.throw({mes:'用户已存在'});
         }else {
@@ -77,5 +84,12 @@ export class AuthService {
            return Observable.throw({mes:'wrong'});
         }
       })
+  }
+  changeStatus(isLoading: boolean,msg: string): void{
+    this.status = Object.assign({},{isLoading:isLoading,msg:msg});
+    this.statusSubject.next(this.status);
+  }
+  getStatus(): Observable<Status>{
+    return this.statusSubject.asObservable();
   }
 }

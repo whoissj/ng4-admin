@@ -16,3 +16,8 @@ export class Auth {
   errMsg: string;
   redirectUrl: string;
 }
+
+export class Status {
+  isLoading: boolean;
+  msg: string;
+}

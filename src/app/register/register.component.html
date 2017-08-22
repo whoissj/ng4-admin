@@ -26,7 +26,7 @@
       <button nz-button class="register-form-button"
               [nzType]="'primary'"
               [nzSize]="'large'"
-              [nzLoading]="isLoading">{{statusMes}}</button>
+              [nzLoading]="(status|async).isLoading"><span>{{(status|async).msg}}</span></button>
       <!--<div nz-button class="register-form-button to-login" [nzType]="'default'" [nzSize]="'large'" routerLink="/login">登  录</div>-->
       <a routerLink="/login">有账号？ 去登录</a>
     </div>

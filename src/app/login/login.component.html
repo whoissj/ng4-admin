@@ -30,7 +30,7 @@
       <button nz-button class="login-form-button"
               [nzType]="'primary'"
               [nzSize]="'large'"
-              [nzLoading]="isLoading"><span>{{loginStatus}}</span></button>
+              [nzLoading]="(status|async).isLoading"><span>{{(status|async).msg}}</span></button>
       <a routerLink="/register">立  即 注    册</a>
     </div>
   </div>
