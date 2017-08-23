@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NzModalSubject } from 'ng-zorro-antd';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../core/auth.service";
+import {AuthService} from "../../core/auth.service";
 import { NzModalService } from 'ng-zorro-antd';
 
 @Component({

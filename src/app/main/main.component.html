@@ -3,39 +3,34 @@
             [nzCollapsedWidth]="64" [nzBreakpoint]="'lg'"
             [nzTrigger]="null" nzCollapseChange="'onCollapseChange()'">
 
-    <div class="logo">
+    <div class="logo" [routerLink]="['./home']">
       <img src="../../assets/logo-icon-sm.png" alt="">
       <span [hidden]="isCollapsed">无 忧 易 考</span>
     </div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
-      <li nz-submenu>
-        <span title><i class="anticon anticon-user fz-15"></i><span class="nav-text fz-15">User</span></span>
+      <li nz-menu-item class="my-home" [routerLink]="['./home']" routerLinkActive="ant-menu-item-selected">
+        <span><i class="anticon anticon-home "></i><span class="nav-text">首页</span></span>
+      </li>
+      <li nz-submenu [nzOpen]="activatedUrl === '/main/user'">
+        <span title><i class="anticon anticon-user"></i><span class="nav-text">用户管理</span></span>
         <ul>
-          <li nz-menu-item>Tom</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
+          <li nz-menu-item [routerLink]="['./user']" routerLinkActive="ant-menu-item-selected" >
+            <i class="anticon anticon-eye-o"></i>
+            <span>查询用户</span>
+          </li>
         </ul>
       </li>
-      <li nz-submenu>
-        <span title><i class="anticon anticon-team fz-15"></i><span class="nav-text fz-15">Team</span></span>
+      <li nz-submenu [nzOpen]="activatedUrl.indexOf('lexicon')>-1">
+        <span title><i class="anticon anticon-switcher"></i><span class="nav-text">词库管理</span></span>
         <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
-        </ul>
-      </li>
-      <li nz-submenu>
-        <span title><i class="anticon anticon-user fz-15"></i><span class="nav-text fz-15">User</span></span>
-        <ul>
-          <li nz-menu-item>Tom</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul>
-      </li>
-      <li nz-submenu>
-        <span title><i class="anticon anticon-team fz-15"></i><span class="nav-text fz-15">Team</span></span>
-        <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
+          <li nz-menu-item [routerLink]="['./lexicon/check']" routerLinkActive="ant-menu-item-selected" >
+             <i class="anticon anticon-eye-o"></i>
+            <span>查询词库</span>
+          </li>
+          <li nz-menu-item [routerLink]="['./lexicon/add']" routerLinkActive="ant-menu-item-selected" >
+             <i class="anticon anticon-eye-o"></i>
+            <span>添加词库</span>
+          </li>
         </ul>
       </li>
       <li nz-submenu>
@@ -68,7 +63,22 @@
           <li nz-menu-item>Team 2</li>
         </ul>
       </li>
-      <li nz-menu-item><span><i class="anticon anticon-file fz-15"></i><span class="nav-text fz-15">File</span></span></li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-user fz-15"></i><span class="nav-text fz-15">User</span></span>
+        <ul>
+          <li nz-menu-item>Tom</li>
+          <li nz-menu-item>Bill</li>
+          <li nz-menu-item>Alex</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-team fz-15"></i><span class="nav-text fz-15">Team</span></span>
+        <ul>
+          <li nz-menu-item>Team 1</li>
+          <li nz-menu-item>Team 2</li>
+        </ul>
+      </li>
+
     </ul>
   </nz-sider>
   <nz-layout>
@@ -91,97 +101,15 @@
               <span>退出登录</span>
             </span>
           </li>
-          <li nz-menu-item (click)="modalTest()">
-            <span>
-              <i class="anticon anticon-poweroff"></i>
-              <span>测试对话</span>
-            </span>
-          </li>
         </ul>
       </nz-dropdown>
     </nz-header>
     <nz-content class="my-ngconteny">
-      <div class="my-content" >
-        <ul nz-menu>
-          <li nz-menu-item>{{number}}</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul>
-        <ul nz-menu>
-          <li nz-menu-item>{{number}}</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul>
-        <ul nz-menu>
-          <li nz-menu-item>{{number}}</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul>
-        <ul nz-menu>
-          <li nz-menu-item>{{number}}</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul>
-        <ul nz-menu>
-          <li nz-menu-item>{{number}}</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul> <ul nz-menu>
-        <li nz-menu-item>{{number}}</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul> <ul nz-menu>
-        <li nz-menu-item>{{number}}</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul>
-        <ul nz-menu>
-          <li nz-menu-item>{{number}}</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul> <ul nz-menu>
-        <li nz-menu-item>{{number}}</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul> <ul nz-menu>
-        <li nz-menu-item>{{number}}</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul> <ul nz-menu>
-        <li nz-menu-item>{{number}}</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul> <ul nz-menu>
-        <li nz-menu-item>{{number}}</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul> <ul nz-menu>
-        <li nz-menu-item>{{number}}</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul> <ul nz-menu>
-        <li nz-menu-item>{{number}}</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul> <ul nz-menu>
-        <li nz-menu-item>{{number}}</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul>
-
-
-
-
-
-
-
-
-
-
-      </div>
+      <router-outlet></router-outlet>
     </nz-content>
     <nz-footer  class="rightcopy">
       <span>jdtx ©2017 All Right Reserved</span>
+      <!--<button type="button" (click)="onClick()">up</button>-->
     </nz-footer>
   </nz-layout>
 </nz-layout>

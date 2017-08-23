@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NzModalCustomizeComponent } from './nz-modal-customize.component';
+import { AddLexiconComponent } from './add-lexicon.component';
 
-describe('NzModalCustomizeComponent', () => {
-  let component: NzModalCustomizeComponent;
-  let fixture: ComponentFixture<NzModalCustomizeComponent>;
+describe('AddLexiconComponent', () => {
+  let component: AddLexiconComponent;
+  let fixture: ComponentFixture<AddLexiconComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NzModalCustomizeComponent ]
+      declarations: [ AddLexiconComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NzModalCustomizeComponent);
+    fixture = TestBed.createComponent(AddLexiconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

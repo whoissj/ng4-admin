@@ -1,0 +1,32 @@
+<nz-breadcrumb style="margin:12px 0;">
+  <nz-breadcrumb-item>词库</nz-breadcrumb-item>
+  <nz-breadcrumb-item>查询</nz-breadcrumb-item>
+</nz-breadcrumb>
+<div class="main-content">
+  <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" [nzBordered]="true">
+    <thead nz-thead>
+    <tr>
+      <th nz-th><span>词库名称</span></th>
+      <th nz-th>
+            <span>
+              单词数
+              <nz-table-sort [(nzValue)]="ageSort" (nzValueChange)="SortChange($event,'num')"></nz-table-sort>
+            </span>
+      </th>
+      <th nz-th>
+        <span>
+          已学习人数
+           <nz-table-sort [(nzValue)]="ageSort" (nzValueChange)="SortChange($event,'people')"></nz-table-sort>
+        </span>
+      </th>
+    </tr>
+    </thead>
+    <tbody nz-tbody>
+    <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+      <td nz-td><a>{{data.name}}</a></td>
+      <td nz-td>{{data.num}}</td>
+      <td nz-td>{{data.people}}</td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>

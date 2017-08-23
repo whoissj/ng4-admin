@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../core/auth.service";
-import {Auth} from "../domain/entries";
-import {Router} from "@angular/router";
+import { AuthService } from "../core/auth.service";
+import { Auth } from "../domain/entries";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { NzModalService } from 'ng-zorro-antd';
-import { NzModalCustomizeComponent } from '../nz-modal-customize/nz-modal-customize.component';
-import {ChangePasswordComponent} from "../change-password/change-password.component";
+import { ChangePasswordComponent } from "../modal/change-password/change-password.component";
 
 @Component({
   templateUrl: './main.component.html',
@@ -13,9 +12,16 @@ import {ChangePasswordComponent} from "../change-password/change-password.compon
 export class MainComponent implements OnInit {
   isCollapsed = false;
   auth: Auth;
-  number: number = 0;
-  constructor(private authService: AuthService,private router: Router,private nzModalService: NzModalService) {
-
+  activatedUrl: string;
+  constructor(private authService: AuthService,
+              private router: Router,
+              private nzModalService: NzModalService,
+              private routeInfo: ActivatedRoute ) {
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        this.activatedUrl = e.url;
+      }
+    })
   }
 
   changePsd(username){
@@ -34,9 +40,6 @@ export class MainComponent implements OnInit {
         console.log('Click cancel');
       },
     });
-    subscription.subscribe(res => {
-      console.log(res);
-    })
   }
 
   logout(){
@@ -55,30 +58,6 @@ export class MainComponent implements OnInit {
     })
   }
 
-  modalTest(){
-    const subscription  = this.nzModalService.open({
-      title:'提示',
-      content: NzModalCustomizeComponent,
-      footer: false,
-      componentParams: {
-        name: "input names"
-      },
-      onOk() {
-        console.log('ok clicked')
-      },
-      onCancel() {
-        console.log('Click cancel');
-      },
-    });
-    subscription.subscribe(res => {
-      console.log(res);
-      if(typeof res === 'number'){
-        this.number += res;
-      }
-    })
-  }
-
-
   doLogout(that) {
     that.authService.unAuth();
     that.auth = null;
@@ -89,5 +68,7 @@ export class MainComponent implements OnInit {
     this.authService.getAuth()
       .subscribe(auth => this.auth = Object.assign({},auth));
   }
-
+  onClick(){
+    window.scrollTo(0, 0);
+  }
 }

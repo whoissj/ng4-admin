@@ -12,6 +12,7 @@
   background-color: #333;
   border-radius: 6px;
   margin: 16px;
+  cursor: pointer;
 }
 .logo span{
   float: right;
@@ -30,6 +31,12 @@
   color: #fff;
   line-height: 32px;
   font-size: 18px;
+}
+:host ::ng-deep.ant-menu-inline .ant-menu-item {
+  font-size: 15px;
+}
+:host ::ng-deep.ant-menu-inline .ant-menu-submenu-title {
+  font-size: 16px;
 }
 :host ::ng-deep .ant-layout-sider-collapsed .nav-text {
   display: none;
@@ -58,7 +65,7 @@
   min-height: 100%;
 }
 .my-ngconteny{
-  margin:24px 16px 0;
+  margin:15px;
 }
 .rightcopy{
   text-align: center;
@@ -68,4 +75,13 @@
 .set-btn{
   float: right;
   margin-right: 18px;
+}
+.my-home {
+  font-size: 15px!important;
+  border-bottom: 1px solid #333;
+}
+.my-content {
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 6px;
 }

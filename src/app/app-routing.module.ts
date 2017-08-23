@@ -11,19 +11,23 @@ const routes: Routes = [
   },
   {
     path:'main',
-    redirectTo:'main'
+    redirectTo:'main/home',
+    pathMatch: 'full'
   },
   {
     path:'todo',
-    redirectTo: 'todo/ALL'
+    redirectTo: 'todo/ALL',
+    pathMatch: 'full'
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    pathMatch: 'full'
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    pathMatch: 'full'
   }
 ];
 

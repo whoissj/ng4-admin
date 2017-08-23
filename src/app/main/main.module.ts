@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MainComponent} from "./main.component";
-import {MainRoutingModule} from "./main-routing.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MainComponent } from "./main.component";
+import { MainRoutingModule } from "./main-routing.module";
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import {NzModalCustomizeComponent} from "../nz-modal-customize/nz-modal-customize.component";
-import {ChangePasswordComponent} from "../change-password/change-password.component";
+import { ChangePasswordComponent } from "../modal/change-password/change-password.component";
+import { UserComponent } from './user/user.component';
+import { HomeComponent } from './home/home.component';
+import { AngularEchartsModule } from 'ngx-echarts';
+import { LexiconComponent } from './lexicon/lexicon.component';
+import { AddLexiconComponent } from './lexicon/add-lexicon.component';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 @NgModule({
   imports: [
@@ -13,13 +19,19 @@ import {ChangePasswordComponent} from "../change-password/change-password.compon
     FormsModule,
     ReactiveFormsModule,
     MainRoutingModule,
-    NgZorroAntdModule.forRoot()
+    NgZorroAntdModule.forRoot(),
+    AngularEchartsModule,
+    FileUploadModule
   ],
   declarations: [
     MainComponent,
-    NzModalCustomizeComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    UserComponent,
+    HomeComponent,
+    LexiconComponent,
+    AddLexiconComponent
   ],
-  entryComponents:[NzModalCustomizeComponent,ChangePasswordComponent]
+  providers:[ ],
+  entryComponents:[ChangePasswordComponent]
 })
 export class MainModule { }
