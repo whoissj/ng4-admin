@@ -13,6 +13,9 @@ export class MainComponent implements OnInit {
   isCollapsed = false;
   auth: Auth;
   activatedUrl: string;
+  showScrollTop: boolean = true;
+  showTips: boolean = false;
+  scrollTop: number;
   constructor(private authService: AuthService,
               private router: Router,
               private nzModalService: NzModalService,
@@ -21,9 +24,20 @@ export class MainComponent implements OnInit {
       if (e instanceof NavigationEnd) {
         this.activatedUrl = e.url;
       }
-    })
+    });
+    window.onscroll = () =>{
+      this.scrollTop = document.querySelector('body').scrollTop;
+      if(this.scrollTop > 200) {
+        this.showScrollTop = false;
+      }else{
+        this.showScrollTop = true;
+      }
+    }
   }
-
+  scollTotop(){
+    this.showTips = false;
+    window.scrollTo(0,0);
+  }
   changePsd(username){
     const subscription  = this.nzModalService.open({
       title:false,

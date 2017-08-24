@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Rx";
 import {ReplaySubject} from "rxjs/ReplaySubject";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Subject} from "rxjs/Subject";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,7 @@ export class AuthService {
   status:Status = {isLoading:false,msg:' '};
   statusSubject: Subject<Status> = new BehaviorSubject<Status>(this.status);
   private headers = new Headers({'Content-Type': 'application/json'});
-
+  private API_URL = environment.apiUrl;
   constructor(private http: Http,private userService: UserService) {
     let oldAuth = JSON.parse(localStorage.getItem('auth'));
     if(oldAuth){
@@ -75,7 +76,7 @@ export class AuthService {
     return this.userService.findUser(username)
       .switchMap(user => {
         if(user.password === password) {
-          let url = `http://localhost:3000/users/${user.id}`;
+          let url = `${this.API_URL}/users/${user.id}`;
           return this.http.patch(url,JSON.stringify({password:newpsd}),{headers: this.headers})
             .map(res => {
               return res.json();

@@ -4,15 +4,18 @@ import { User } from '../domain/entries';
 import {Http, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import 'rxjs/add/operator/map';
-
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
 export class UserService {
 
-  private api_url: string = 'http://localhost:3000/users';
+  private API_URL = environment.apiUrl;
+  private api_url: string = `${this.API_URL}/users`;
   private headers = new Headers({'Content-Type': 'application/json'});
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    console.log(environment);
+  }
 
   getUser(userId: number):Observable<User>{
     const url = `${this.api_url}/${userId}`;

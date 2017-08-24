@@ -8,8 +8,13 @@ import { echartsData } from '../../../data'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  echartsIntance1;
+  echartsIntance2;
+  echartsIntance3;
   constructor(private router: Router) {
+    setTimeout(() => {
+      this.resizeChart();
+    },100);
   }
 
   ngOnInit() {
@@ -18,6 +23,26 @@ export class HomeComponent implements OnInit {
   chartOption = echartsData.chartOption;
   Baroptions = echartsData.Baroptions;
   linkoption = echartsData.linkoption;
-  datamapvalue = echartsData.datamapvalue;
-  mapoption = echartsData.mapoption;
+
+  onChartInit1(e){
+    this.echartsIntance1 = e;
+  }
+  onChartInit2(e){
+    this.echartsIntance2 = e;
+  }
+  onChartInit3(e){
+    this.echartsIntance3 = e;
+  }
+  resizeChart() {
+    if (this.echartsIntance1) {
+      this.echartsIntance1.resize();
+    }
+    if (this.echartsIntance2) {
+      this.echartsIntance2.resize();
+    }
+    if (this.echartsIntance3) {
+      this.echartsIntance3.resize();
+    }
+  }
+
 }

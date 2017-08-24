@@ -106,10 +106,18 @@
     </nz-header>
     <nz-content class="my-ngconteny">
       <router-outlet></router-outlet>
+      <nz-tooltip [nzTitle]="'返回顶部'" [nzPlacement]="'left'" class="top-btn" [nzVisible]="showTips" [hidden]="showScrollTop">
+        <a nz-tooltip>
+          <button type="button" nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="scollTotop()">
+            <i class="anticon anticon-to-top"></i>
+          </button>
+        </a>
+      </nz-tooltip>
+
     </nz-content>
     <nz-footer  class="rightcopy">
       <span>jdtx ©2017 All Right Reserved</span>
-      <!--<button type="button" (click)="onClick()">up</button>-->
+      <!--<button type="button" (clia nz-tnClick()">up</button>-->
     </nz-footer>
   </nz-layout>
 </nz-layout>

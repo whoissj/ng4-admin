@@ -85,3 +85,8 @@
   background-color: #fff;
   border-radius: 6px;
 }
+.top-btn {
+  position: fixed;
+  right: 15px;
+  bottom: 60px;
+}

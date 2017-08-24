@@ -1,4 +1,3 @@
-///<reference path="../../../node_modules/@angular/core/src/metadata/lifecycle_hooks.d.ts"/>
 import {Component, OnInit, Inject, OnDestroy} from '@angular/core';
 import { AuthService } from '../core/auth.service';
 import {Router} from "@angular/router";
@@ -6,6 +5,7 @@ import {Auth, Status} from "../domain/entries";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { NzModalService } from 'ng-zorro-antd';
 import {Observable} from "rxjs/Observable";
+
 
 @Component({
   templateUrl: './login.component.html',

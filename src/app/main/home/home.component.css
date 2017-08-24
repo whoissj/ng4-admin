@@ -1,3 +1,6 @@
 .demo-chart {
   height: 400px;
+  padding: 10px!important;
+  margin: 5px;
+  background-color: #fff!important;
 }

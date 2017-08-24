@@ -1,4 +1,14 @@
-<div echarts [options] = "chartOption" [loading]="showloading" class="demo-chart"></div>
-<div echarts [options] = "Baroptions" [loading]="showloading" class="demo-chart"></div>
-<div echarts [options] = "linkoption" [loading]="showloading" class="demo-chart"></div>
-<div echarts [options] = "mapoption" [loading]="showloading" class="demo-chart"></div>
+<div nz-row [nzGutter]="'8'" class="home-content">
+  <div  nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="12" [nzXl]="12" class="gutter-row">
+    <div echarts [options] = "chartOption" [loading]="showloading"
+        class="demo-chart" (chartInit)="onChartInit1($event)"></div>
+  </div>
+  <div  nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="12" [nzXl]="12" class="gutter-row">
+    <div echarts [options] = "Baroptions" [loading]="showloading"
+        class="demo-chart"  (chartInit)="onChartInit2($event)"></div>
+  </div>
+  <div  nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="12" [nzXl]="12" class="gutter-row">
+    <div echarts [options] = "linkoption" [loading]="showloading"
+        class="demo-chart" (chartInit)="onChartInit2($event)"></div>
+  </div>
+</div>

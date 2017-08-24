@@ -11,6 +11,7 @@ import { AngularEchartsModule } from 'ngx-echarts';
 import { LexiconComponent } from './lexicon/lexicon.component';
 import { AddLexiconComponent } from './lexicon/add-lexicon.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import {ImgPipePipe} from "../core/img-pipe.pipe";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     UserComponent,
     HomeComponent,
     LexiconComponent,
-    AddLexiconComponent
+    AddLexiconComponent,
+    ImgPipePipe
   ],
   providers:[ ],
   entryComponents:[ChangePasswordComponent]
